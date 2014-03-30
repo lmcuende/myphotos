@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-POJECT_ROUTE = os.path.dirname(os.path.realpath(__file__))
+PROJECT_ROUTE = os.path.dirname(os.path.realpath(__file__))
 
 
 # Quick-start development settings - unsuitable for production
@@ -26,6 +26,8 @@ DEBUG = True
 ADMINS = (('Luis Miguel Cuende', 'lmcuende@gmail.com'),)
 
 TEMPLATE_DEBUG = True
+
+TEMPLATE_DIRS = (os.path.join(PROJECT_ROUTE,'templates'),)
 
 ALLOWED_HOSTS = []
 
@@ -54,6 +56,8 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'myphotos.urls'
+
+MEDIA_ROOT = os.path.join(PROJECT_ROUTE,'uploads')
 
 WSGI_APPLICATION = 'myphotos.wsgi.application'
 
