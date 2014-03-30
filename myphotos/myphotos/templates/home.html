@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>MyPhotos app to Upload photos with comments to my site</title>
+</head>
+<body>
+
+	<header>
+		<nav>
+			<ul>
+				<li><a href='/'>Home</a></li>
+				<li><a href='/users'>Users registered</a></li>
+				<li><a href='/photos'>Photos</a></li>
+				<li><a href='/about'>About</a></li>
+			</ul>
+		</nav>
+	</header>
+	<section>
+		<h1>Blog's photos</h1>
+		<p>Now we have registered:</p>
+		<ul>
+			{% for datareg in photos %}
+			<li>{{datareg.phtitle}}</li>
+			{% endfor %}
+		</ul>
+	</section>
+	<footer>
+		<p>Copyleft 2014 Luis Miguel Cuende</p>
+	</footer>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Photos</title>
+</head>
+<body>
+	<style>
+		img { width:100px; }
+	</style>
+	<header>
+		<nav>
+			<ul>
+				<li><a href='/'>Home</a></li>
+				<li><a href='/users'>Users registered</a></li>
+				<li><a href='/photos'>Photos</a></li>
+				<li><a href='/about'>About</a></li>
+			</ul>
+		</nav>
+	</header>
+	<section>
+		<h1>My photos</h1>
+		<ul>
+			{% for datareg in data %}
+			<li>
+				<a href='/photo/{{data.id}}'>{{data.phtitle}}</a><br>
+				<img src='{{MEDIA_URL}}{{data.phimage}}'>
+			</li>
+			{% endfor %}
+		</ul>
+	</section>
+</body>
+</html>

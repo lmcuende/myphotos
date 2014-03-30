@@ -1,6 +1,7 @@
 #encoding:utf-8
 from django.db import models
 from django.contrib.auth.models import User
+
 class Photo(models.Model):
 	phtitle = models.CharField(max_length=128, unique=True)
 	phauthor = models.CharField(max_length=255)
@@ -12,3 +13,10 @@ class Photo(models.Model):
 
 	def __unicode__(self):
 		return self.phtitle
+
+class Comment(models.Model):
+	photo = models.ForeignKey(Photo)
+	text = models.TextField(help_text='Your comment', verbose_name='Comment')
+
+	def __unicode__(self):
+		return self.text
