@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Photo detail</title>
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li><a href='/'>Home</a></li>
+				<li><a href='/users'>Users registered</a></li>
+				<li><a href='/photos'>Photos</a></li>
+				<li><a href='/about'>About</a></li>
+			</ul>
+		</nav>
+	</header>
+	<section>
+		<h1>{{photo.phtitle}}</h1>
+		<div id='author'>
+			<h2>Author</h2>
+			<p>{{photo.phauthor}}</p>
+		</div>
+		<div id='site'>
+			<h2>Location</h2>
+			<p>{{photo.phsite}}</p>
+		</div>
+		<div id='notes'>
+			<h2>Notes</h2>
+			<p>{{photo.phnotes}}</p>
+		</div>
+		<div id='reference'>
+			<img src='{{MEDIA_URL}}{{photo.phimage}}'>
+		</div>
+		<div id='comments'>
+			<h2>Comments</h2>
+				{% for item in comments %}
+					<p>{{item.text}}</p>
+				{% empty %}
+					<p>No registered comments</p>
+				{% endfor %}
+		</div>
+		
+	</section>
+	<footer>
+		<p>Registered {{photo.phtime_registered}} by {{photo.user}}</p>
+	</footer>
+
+</body>
+</html>

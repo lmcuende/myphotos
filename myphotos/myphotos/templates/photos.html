@@ -20,11 +20,13 @@
 	<section>
 		<h1>My photos</h1>
 		<ul>
-			{% for datareg in data %}
+			{% for datum in data %}
 			<li>
-				<a href='/photo/{{data.id}}'>{{data.phtitle}}</a><br>
-				<img src='{{MEDIA_URL}}{{data.phimage}}'>
+				<a href='/photo/{{datum.id}}'>{{datum.phtitle}}</a><br>
+				<img src='{{MEDIA_URL}}{{datum.phimage}}'>
 			</li>
+			{% empty %}
+			<li>Sorry, they didn't photos</li>
 			{% endfor %}
 		</ul>
 	</section>

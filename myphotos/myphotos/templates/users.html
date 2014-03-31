@@ -1,36 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<header>
-		<nav>
-			<ul>
-				<li><a href='/'>Home</a></li>
-				<li><a href='/users'>Users registered</a></li>
-				<li><a href='/photos'>Photos</a></li>
-				<li><a href='/about'>About</a></li>
-			</ul>
-		</nav>
-	</header>	
-	<section>
-		<h1>Users</h1>
-		<ul>
-			{% for datareg in users %}
-			<li>
-				{{datareg.username}} - <em>{{datareg.email}}</em>
-				<ul>
-					{% for item in photos %}
-						{% if item.user == datareg %}
-							<li>{{item}}</li>
-						{% endif %}
-					{% endfor %}
-				</ul>
-			</li>
-			{% endfor %}
-		</ul>
-	</section>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block titleblock %} Registered users {% endblock %}
+
+{% block headblock %}
+	<h1>Users</h1>
+{% endblock %}
+
+{% block contentblock %}
+	<ul>
+		{% for datareg in users %}
+		<li>{{datareg.username|capfirst}} - <em>{{datareg.email}}</em>
+			<ul>
+				{% for item in photos %}
+					{% if item.user == datareg %}
+						<li>{{item}}</li>
+					{% endif %}
+				{% empty %}
+					<li>This user hasn't registered photos yet</li>
+				{% endfor %}
+			</ul>
+		</li>
+		{% empty %}
+		<li>There aren't registered users.</li>
+		{% endfor %}
+	</ul>
+{% endblock %}

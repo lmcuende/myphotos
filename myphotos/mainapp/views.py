@@ -21,4 +21,9 @@ def list_photos(request):
 	photos = Photo.objects.all()
 	return render_to_response('photos.html',{'data':photos}, context_instance=RequestContext(request))
 
+def photo_detail(request, id_photo):
+	datum = get_object_or_404(Photo, pk=id_photo)
+	comments = Comment.objects.filter(photo=datum)
+	return render_to_response('photo.html',{'photo':datum,'comments':comments},context_instance=RequestContext(request))
+
 # Create your views here.

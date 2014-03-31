@@ -1,33 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>MyPhotos app to Upload photos with comments to my site</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-	<header>
-		<nav>
-			<ul>
-				<li><a href='/'>Home</a></li>
-				<li><a href='/users'>Users registered</a></li>
-				<li><a href='/photos'>Photos</a></li>
-				<li><a href='/about'>About</a></li>
-			</ul>
-		</nav>
-	</header>
-	<section>
-		<h1>Blog's photos</h1>
-		<p>Now we have registered:</p>
+{% comment %}MyPhotos - Home page {% endcomment %}
+
+{% block titleblock %} Home {% endblock %}
+
+{% block style_css %}
+	.odd { background-color:#90EE90; }
+	.pair { background-color:#5ACC5A; }
+{% endblock %}
+
+{% block headblock %}
+	<h1>MyPhotos</h1>
+{% endblock %}
+
+{% block contentblock %}
+	<p>Now we have registered:
+		{% with tot=photos.count %}
+			{{tot}} photo{{total|pluralize}}
+		{% endwith %}
+	</p>
 		<ul>
 			{% for datareg in photos %}
-			<li>{{datareg.phtitle}}</li>
+			<li class="{% cycle 'odd' 'pair' %}">{{datareg.phtitle}}</li>
+			{% empty %}
+			<li>There isn't registered photos yet.</li>
 			{% endfor %}
 		</ul>
-	</section>
-	<footer>
-		<p>Copyleft 2014 Luis Miguel Cuende</p>
-	</footer>
-
-</body>
-</html>
+{% endblock %}

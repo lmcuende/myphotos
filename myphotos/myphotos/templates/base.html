@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="author" content="Luis Miguel Cuende">
+	<title>MyPhotos - {% block titleblock %}{% endblock %}</title>
+	<style>
+	{% block style_css %}{% endblock %}	
+	</style>
+</head>
+<body>
+	<header>
+		{% block headblock %}{% endblock %}
+		<nav>
+			<ul>
+				<li><a href='/'>Home</a></li>
+				<li><a href='/users'>Users registered</a></li>
+				<li><a href='/photos'>Photos</a></li>
+				<li><a href='/about'>About</a></li>
+			</ul>
+		</nav>
+		<hr>
+	</header>
+	<section class='content'>
+		{% block contentblock %}{% endblock %}
+	</section>
+	<footer>
+		<p>MyPhotos CopyLeft Luis Miguel Cuende</p>
+	</footer>
+
+</body>
+</html>

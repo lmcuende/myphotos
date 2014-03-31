@@ -59,6 +59,8 @@ ROOT_URLCONF = 'myphotos.urls'
 
 MEDIA_ROOT = os.path.join(PROJECT_ROUTE,'uploads')
 
+MEDIA_URL = 'http://127.0.0.1:8000/media/'
+
 WSGI_APPLICATION = 'myphotos.wsgi.application'
 
 
@@ -92,5 +94,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
+STATIC_ROOT = ''
 
 STATIC_URL = '/static/'
