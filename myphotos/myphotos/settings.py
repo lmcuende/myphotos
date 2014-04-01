@@ -97,3 +97,10 @@ USE_TZ = True
 STATIC_ROOT = ''
 
 STATIC_URL = '/static/'
+
+#To send emails using gmail
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'proyectoasturix@gmail.com'
+EMAIL_HOST_PASSWORD = 'AsturixProject2014'
+EMAIL_PORT = 587
