@@ -1,21 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Photo detail</title>
-</head>
-<body>
-	<header>
-		<nav>
-			<ul>
-				<li><a href='/'>Home</a></li>
-				<li><a href='/users'>Users registered</a></li>
-				<li><a href='/photos'>Photos</a></li>
-				<li><a href='/about'>About</a></li>
-			</ul>
-		</nav>
-	</header>
-	<section>
-		<h1>{{photo.phtitle}}</h1>
+{% extends 'base.html' %}
+
+{% block titleblock %} {{photo.phtitle}} {% endblock %}
+
+{% block headblock %} 
+  <h1>{{photo.phtitle|title}}</h1>
+{% endblock %}
+
+{% block contentblock %}
 		<div id='author'>
 			<h2>Author</h2>
 			<p>{{photo.phauthor}}</p>
@@ -39,11 +30,7 @@
 					<p>No registered comments</p>
 				{% endfor %}
 		</div>
-		
-	</section>
-	<footer>
-		<p>Registered {{photo.phtime_registered}} by {{photo.user}}</p>
-	</footer>
-
-</body>
-</html>
+		<footer>
+			<p>Registered {{ photo.phtime_registered|date:'SHORT_DATETIME_FORMAT' }} by {{photo.user}}</p>
+		</footer>
+{% endblock %}

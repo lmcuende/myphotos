@@ -9,7 +9,7 @@
 {% block contentblock %}
 	<ul>
 		{% for datareg in users %}
-		<li>{{datareg.username|capfirst}} - <em>{{datareg.email}}</em>
+		<li>{{datareg.first_name|capfirst}} {{datareg.last_name|capfirst}} - {{datareg.username}} - <em>{{datareg.email}}</em>
 			<ul>
 				{% for item in photos %}
 					{% if item.user == datareg %}
