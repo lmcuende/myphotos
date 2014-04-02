@@ -12,6 +12,7 @@
 
 {% block contentblock %}
 	<ul>
+		<a href="/photo/add">Add a photo</a>
 		{% for datum in data %}
 		<li>
 			<a href='/photo/{{datum.id}}'>{{datum.phtitle}}</a><br>   
