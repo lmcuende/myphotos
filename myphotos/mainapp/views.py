@@ -5,6 +5,10 @@ from mainapp.forms import PhotoForm, CommentForm, ContactForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
 from django.core.mail import EmailMessage
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required
 
 def about(requets):
 	html = '<html><body>App for upload and comment photos to a blog</body></html>'
@@ -65,3 +69,32 @@ def contact(request):
 	else:
 		form = ContactForm()
 	return render_to_response('contactform.html',{'form':form}, context_instance=RequestContext(request))
+
+def new_user(request):
+	if request.method=='POST':
+		form = UserCreationForm(request.POST)
+		if form.is_valid:
+			form.save()
+			return HttpResponseRedirect('/')
+	else:
+		form = UserCreationForm()
+	return render_to_response('newuser.html',{'form':form}, context_instance=RequestContext(request))
+
+def sign_in(request)
+	if request.method == 'POST':
+		form = AuthenticationForm(request.POST)
+		if form.is_valid:
+			user = request.POST['username']
+			key = request.POST['password']
+			access = authenticate(username=user, password=key)
+			if access is not None:
+				if access.is_active:
+					login(request, access)
+					return HttpResponseRedirect('/private')
+				else:
+					return render_to_response('noactive.html', context_instance=RequestContext(request))
+			else:
+				return render_to_response('nouser.html', context_instance=RequestContext(request))
+	else:
+		form = AuthenticationForm()
+	return render_to_response('sign_in',{'form':form}, context_instance=RequestContext(request))

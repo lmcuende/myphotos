@@ -9,6 +9,7 @@
 {% endblock %}
 
 {% block contentblock %}
+	<a href="/user/new">Add new user</a>
 	<ul>
 		{% for datareg in users %}
 		<li>{{datareg.first_name|capfirst}} {{datareg.last_name|capfirst}} - {{datareg.username}} - <em>{{datareg.email}}</em>

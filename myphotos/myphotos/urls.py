@@ -17,4 +17,5 @@ urlpatterns = patterns('',
     url(r'^contact/$','mainapp.views.contact'),
     url(r'^media/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.MEDIA_ROOT,}),
     url(r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': '/static/images/favicon.ico'}),
+    url(r'^user/new$','mainapp.views.new_user'),
 )
